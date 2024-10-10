@@ -1,0 +1,66 @@
+﻿@model TLCOnline.Models.StaffModel
+
+@{
+    ViewData["Title"] = Labels.UpdateProfile;
+}
+
+<div class="container mt-3">
+    <br />
+    <div class="d-flex align-items-center mb-3">
+        &emsp;&emsp;
+        <h2>@Labels.UpdateProfile</h2>
+    </div><br />
+    <form class="row g-3" id="theForm" asp-action="@nameof(AccountController.Profile)" asp-controller="Account" autocomplete="off" method="post">
+        <input type="hidden" asp-for="Email" />
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Email</label>
+            <input type="text" class="form-control" asp-for="Email" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.StaffId</label>
+            <input type="text" class="form-control" asp-for="StaffId" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Position</label>
+            <input type="text" class="form-control" asp-for="Position" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.MyKad</label>
+            <input type="number" class="form-control" asp-for="MyKad" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Name</label>
+            <input type="text" class="form-control" asp-for="StaffName" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Gender</label>
+            <input type="text" class="form-control" asp-for="Gender" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.PhoneNo</label>
+            <input type="number" class="form-control" asp-for="PhoneNo">
+            <span asp-validation-for="PhoneNo" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.BirthDate</label>
+            <input type="date" class="form-control" asp-for="BirthDate" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.HireDate</label>
+            <input type="date" class="form-control" asp-for="HireDate" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.NewPassword</label>
+            <input type="password" class="form-control" asp-for="Password">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.ConfirmPassword</label>
+            <input type="password" class="form-control" asp-for="ConfirmPassword">
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="col-12">
+            <button id="btnUpdate" class="btn btn-primary" type="submit">@Labels.Update</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,28 @@
+﻿<div class="modal fade" id="alertModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="alertTitle"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="alertMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">@Labels.Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showAlertModal(message, title = "Alert") {
+        if (!message) return;
+
+        $("#alertTitle").text(title);
+        $("#alertMessage").text(message);
+
+        var alertModal = new bootstrap.Modal($("#alertModal"));
+        alertModal.show();
+    }
+</script>

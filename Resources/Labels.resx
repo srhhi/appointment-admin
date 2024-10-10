@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="AddAppoint" xml:space="preserve">
+    <value>Add Appointment</value>
+  </data>
+  <data name="AddCust" xml:space="preserve">
+    <value>Add Customer</value>
+  </data>
+  <data name="AddLaser" xml:space="preserve">
+    <value>Add Laser</value>
+  </data>
+  <data name="AddNewAppoint" xml:space="preserve">
+    <value>Add New Appointment</value>
+  </data>
+  <data name="AddNewCust" xml:space="preserve">
+    <value>Add New Customer</value>
+  </data>
+  <data name="AddNewCustFailed" xml:space="preserve">
+    <value>Add New Customer Failed</value>
+  </data>
+  <data name="AddNewLaser" xml:space="preserve">
+    <value>Add New Laser</value>
+  </data>
+  <data name="AddNewLaserFailed" xml:space="preserve">
+    <value>Add New Laser Failed</value>
+  </data>
+  <data name="AddNewStaff" xml:space="preserve">
+    <value>Add New Staff</value>
+  </data>
+  <data name="AddNewStaffFailed" xml:space="preserve">
+    <value>Add New Staff Failed</value>
+  </data>
+  <data name="AddStaff" xml:space="preserve">
+    <value>Add Staff</value>
+  </data>
+  <data name="Aesthetician" xml:space="preserve">
+    <value>Aesthetician</value>
+  </data>
+  <data name="AppointDate" xml:space="preserve">
+    <value>Appointment Date</value>
+  </data>
+  <data name="AppointDateAlreadyExists" xml:space="preserve">
+    <value>Appointment already exists for the selected date and time.</value>
+  </data>
+  <data name="AppointDateCannotOnWeekend" xml:space="preserve">
+    <value>Appointment date cannot be on a weekend.</value>
+  </data>
+  <data name="AppointDateMustBeAtLeast1DayInTheFuture" xml:space="preserve">
+    <value>Appointment date must be at least one day in the future.</value>
+  </data>
+  <data name="Appointments" xml:space="preserve">
+    <value>Appointments</value>
+  </data>
+  <data name="AppointTime" xml:space="preserve">
+    <value>Appointment Time</value>
+  </data>
+  <data name="AssignedTo" xml:space="preserve">
+    <value>Assigned To</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Birth Date</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Cancelled" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
+  <data name="Chart" xml:space="preserve">
+    <value>Charts</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Confirm Deletion</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="CurrentPrice" xml:space="preserve">
+    <value>Current Price (RM)</value>
+  </data>
+  <data name="CustEmailAlreadyExists" xml:space="preserve">
+    <value>A customer with this Email already exists.</value>
+  </data>
+  <data name="CustMyKad" xml:space="preserve">
+    <value>Customer MyKad</value>
+  </data>
+  <data name="CustMyKadOrEmailAlreadyExists" xml:space="preserve">
+    <value>A customer with this MyKad or Email already exists.</value>
+  </data>
+  <data name="CustName" xml:space="preserve">
+    <value>Customer Name</value>
+  </data>
+  <data name="Customers" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Discount (%)</value>
+  </data>
+  <data name="Doctor" xml:space="preserve">
+    <value>Doctor</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="HireDate" xml:space="preserve">
+    <value>Hire Date</value>
+  </data>
+  <data name="HireDateCannotInFuture" xml:space="preserve">
+    <value>Hire Date cannot be in the future.</value>
+  </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
+  <data name="IncorrectEmailPassword" xml:space="preserve">
+    <value>Incorrect email/password.</value>
+  </data>
+  <data name="LaserName" xml:space="preserve">
+    <value>Laser Name</value>
+  </data>
+  <data name="LaserNameAlreadyExists" xml:space="preserve">
+    <value>A laser with this name already exists.</value>
+  </data>
+  <data name="LaserPrice" xml:space="preserve">
+    <value>Laser Price (RM)</value>
+  </data>
+  <data name="Lasers" xml:space="preserve">
+    <value>Lasers</value>
+  </data>
+  <data name="ListOfAppoint" xml:space="preserve">
+    <value>List of Appointments</value>
+  </data>
+  <data name="ListOfCust" xml:space="preserve">
+    <value>List of Customers</value>
+  </data>
+  <data name="ListOfLaser" xml:space="preserve">
+    <value>List Of Lasers</value>
+  </data>
+  <data name="ListOfStaff" xml:space="preserve">
+    <value>List of Staffs</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>Login Error</value>
+  </data>
+  <data name="MessageDelete" xml:space="preserve">
+    <value>Are you sure you want to delete this item? All related tables will be affected. This action cannot be undone.</value>
+  </data>
+  <data name="MyKad" xml:space="preserve">
+    <value>MyKad without (-)</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="NoOfAppointByStatus" xml:space="preserve">
+    <value>Number of Appointments by Status</value>
+  </data>
+  <data name="NoOfAppointsByLaserName" xml:space="preserve">
+    <value>Number of Appointments by Laser Name</value>
+  </data>
+  <data name="NoOfCustByGender" xml:space="preserve">
+    <value>Number of Customers by Gender</value>
+  </data>
+  <data name="NormalPrice" xml:space="preserve">
+    <value>Normal Price (RM)</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PhoneNo" xml:space="preserve">
+    <value>Phone No</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Receptionist" xml:space="preserve">
+    <value>Receptionist</value>
+  </data>
+  <data name="RegisterDate" xml:space="preserve">
+    <value>Register Date</value>
+  </data>
+  <data name="Scheduled" xml:space="preserve">
+    <value>Scheduled</value>
+  </data>
+  <data name="SelectCust" xml:space="preserve">
+    <value>Select Customer...</value>
+  </data>
+  <data name="SelectLaser" xml:space="preserve">
+    <value>Select Laser...</value>
+  </data>
+  <data name="SelectPosition" xml:space="preserve">
+    <value>Select Position...</value>
+  </data>
+  <data name="SelectStaff" xml:space="preserve">
+    <value>Select Staff...</value>
+  </data>
+  <data name="SelectStatus" xml:space="preserve">
+    <value>Select Status...</value>
+  </data>
+  <data name="SelectTime" xml:space="preserve">
+    <value>Select Time...</value>
+  </data>
+  <data name="SignOut" xml:space="preserve">
+    <value>Sign Out</value>
+  </data>
+  <data name="StaffEmailAlreadyExists" xml:space="preserve">
+    <value>A staff with this Email already exists.</value>
+  </data>
+  <data name="StaffId" xml:space="preserve">
+    <value>Staff ID</value>
+  </data>
+  <data name="StaffIdOrMyKadAlreadyExists" xml:space="preserve">
+    <value>A staff member with this ID or MyKad or email already exists.</value>
+  </data>
+  <data name="Staffs" xml:space="preserve">
+    <value>Staffs</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="TLCOnline" xml:space="preserve">
+    <value>TLCOnline</value>
+  </data>
+  <data name="TLCOnlineDB" xml:space="preserve">
+    <value>TLCOnlineDB</value>
+  </data>
+  <data name="TotalAppoint" xml:space="preserve">
+    <value>Total Appointments</value>
+  </data>
+  <data name="TotalCust" xml:space="preserve">
+    <value>Total Customers</value>
+  </data>
+  <data name="TotalLaser" xml:space="preserve">
+    <value>Total Lasers</value>
+  </data>
+  <data name="TotalStaff" xml:space="preserve">
+    <value>Total Staffs</value>
+  </data>
+  <data name="UpcomingAppoint" xml:space="preserve">
+    <value>Upcoming Appointments</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UpdateAppoint" xml:space="preserve">
+    <value>Update Appointment</value>
+  </data>
+  <data name="UpdateCust" xml:space="preserve">
+    <value>Update Customer</value>
+  </data>
+  <data name="UpdateCustFailed" xml:space="preserve">
+    <value>Update Customer Failed</value>
+  </data>
+  <data name="UpdateLaser" xml:space="preserve">
+    <value>Update Laser</value>
+  </data>
+  <data name="UpdateProfile" xml:space="preserve">
+    <value>Update Profile</value>
+  </data>
+  <data name="UpdateStaff" xml:space="preserve">
+    <value>Update Staff</value>
+  </data>
+  <data name="UpdateStaffFailed" xml:space="preserve">
+    <value>Update Staff Failed</value>
+  </data>
+  <data name="ViewAppoint" xml:space="preserve">
+    <value>View Appointment</value>
+  </data>
+  <data name="ViewCust" xml:space="preserve">
+    <value>View Customer</value>
+  </data>
+  <data name="ViewLaser" xml:space="preserve">
+    <value>View Laser</value>
+  </data>
+  <data name="ViewStaff" xml:space="preserve">
+    <value>View Staff</value>
+  </data>
+  <data name="UpdateLaserFailed" xml:space="preserve">
+    <value>Update Laser Failed</value>
+  </data>
+  <data name="UpdateAppointFailed" xml:space="preserve">
+    <value>Update Appointment Failed</value>
+  </data>
+  <data name="AddNewAppointFailed" xml:space="preserve">
+    <value>Add New Appointment Failed</value>
+  </data>
+  <data name="ConfirmPasswordShouldMatchPassword" xml:space="preserve">
+    <value>Confirm password should match password</value>
+  </data>
+  <data name="StaffName" xml:space="preserve">
+    <value>Staff Name</value>
+  </data>
+  <data name="CustEmail" xml:space="preserve">
+    <value>Customer Email</value>
+  </data>
+  <data name="StaffPosition" xml:space="preserve">
+    <value>Staff Position</value>
+  </data>
+  <data name="StaffMyKad" xml:space="preserve">
+    <value>Staff MyKad</value>
+  </data>
+  <data name="StaffEmail" xml:space="preserve">
+    <value>Staff Email</value>
+  </data>
+  <data name="StaffPhoneNo" xml:space="preserve">
+    <value>Staff Phone No</value>
+  </data>
+  <data name="AppointAlreadyExistsForBothCustomerAndStaff" xml:space="preserve">
+    <value>This customer and staff combination is already booked for the selected date and time.</value>
+  </data>
+  <data name="AppointAlreadyExistsForThatCust" xml:space="preserve">
+    <value>This customer already has an appointment at the selected date and time.</value>
+  </data>
+  <data name="AppointAlreadyExistsForThatStaff" xml:space="preserve">
+    <value>This staff is already booked for another appointment at the selected date and time.</value>
+  </data>
+  <data name="AppointExceeded3" xml:space="preserve">
+    <value>You cannot have more than 3 appointments at the same date and time.</value>
+  </data>
+  <data name="InactiveAccountPleaseContactAdmin" xml:space="preserve">
+    <value>Your account is inactive. Please contact administrator.</value>
+  </data>
+</root>

@@ -1,0 +1,120 @@
+﻿@model TLCOnline.Models.StaffModel
+
+@{
+    ViewData["Title"] = Labels.AddStaff;
+}
+
+<div class="container mt-3">
+    <br />
+    <div class="d-flex align-items-center mb-3">
+        <a asp-controller="Staff" asp-action="@nameof(StaffController.List)" class="text-decoration-none">
+            <i class="bi bi-arrow-left-circle-fill h2 me-2"></i>
+        </a>&emsp;&emsp;
+        <h2>@Labels.AddStaff</h2>
+    </div><br />
+    <form class="row g-3" id="theForm" asp-action="@nameof(StaffController.Add)" asp-controller="Staff" autocomplete="off" method="post">
+        <div class="col-md-4">
+            <label class="form-label">@Labels.StaffId</label>
+            <input type="text" class="form-control" asp-for="StaffId">
+            <span asp-validation-for="StaffId" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Position</label>
+            <select class="form-select" asp-for="Position">
+                <option value="">@Labels.SelectPosition</option>
+                <option value="Doctor">@Labels.Doctor</option>
+                <option value="Aesthetician">@Labels.Aesthetician</option>
+                <option value="Receptionist">@Labels.Receptionist</option>
+            </select>
+            <span asp-validation-for="Position" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.MyKad</label>
+            <input type="number" class="form-control" asp-for="MyKad">
+            <span asp-validation-for="MyKad" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Email</label>
+            <input type="email" class="form-control" asp-for="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Name</label>
+            <input type="text" class="form-control" asp-for="StaffName">
+            <span asp-validation-for="StaffName" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Gender</label>
+            <input type="text" class="form-control" asp-for="Gender" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.PhoneNo</label>
+            <input type="number" class="form-control" asp-for="PhoneNo">
+            <span asp-validation-for="PhoneNo" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.BirthDate</label>
+            <input type="text" class="form-control" asp-for="BirthDate" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.HireDate</label>
+            <input type="date" class="form-control" asp-for="HireDate">
+            <span asp-validation-for="HireDate" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Password</label>
+            <input type="password" class="form-control" asp-for="Password">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.ConfirmPassword</label>
+            <input type="password" class="form-control" asp-for="ConfirmPassword">
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Status</label>
+            <input type="text" class="form-control" asp-for="Status" value="Active" readonly>
+        </div>
+        <div class="col-12">
+            <button id="btnSubmit" class="btn btn-primary" type="submit">@Labels.Submit</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        if (alertMessage) {
+            showAlertModal('@ViewData["AlertMessage"]', '@ViewData["AlertTitle"]');
+        }
+
+        function GenderAndBirthDate() {
+            this.value = this.value.replace(/\D/g, '').substring(0, 12);
+
+            var myKad = $('#MyKad').val();
+
+            if (myKad.length === 12) {
+                var yearPrefix = parseInt(myKad.substring(0, 2), 10);
+                var month = parseInt(myKad.substring(2, 4), 10);
+                var day = parseInt(myKad.substring(4, 6), 10);
+                var lastDigit = myKad.charAt(11);
+
+                var year = (yearPrefix >= 0 && yearPrefix <= 21 ? 2000 : 1900) + yearPrefix;
+                var isLeap = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+                var daysInMonth = [31, isLeap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+                if (month >= 1 && month <= 12 && day >= 1 && day <= daysInMonth[month - 1]) {
+                    $("#BirthDate").val(`${day}/${month}/${year}`);
+                    $("#Gender").val(parseInt(lastDigit, 10) % 2 === 0 ? 'Female' : 'Male');
+                } else {
+                    showAlertModal('Invalid Birth Date. Please check your MyKad.', 'Add New Staff Failed');
+                }
+            }
+        }
+
+        $(function () {
+            $('#MyKad').on("input", GenderAndBirthDate);
+        });
+
+    </script>
+}

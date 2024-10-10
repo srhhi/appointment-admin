@@ -1,0 +1,57 @@
+﻿@model TLCOnline.Models.AppointmentModel
+
+@{
+    ViewData["Title"] = Labels.ViewAppoint;
+
+    var customers = ViewBag.Customers as IEnumerable<SelectListItem>;
+    var lasers = ViewBag.Lasers as IEnumerable<SelectListItem>;
+    var staffs = ViewBag.Staffs as IEnumerable<SelectListItem>;
+
+    string statusClass = Model.Status switch
+    {
+        "Scheduled" => "status-scheduled",
+        "Completed" => "status-completed",
+        "Cancelled" => "status-cancelled",
+        _ => "status-default"
+    };
+}
+
+<div class="container mt-3">
+    <br />
+    <div class="d-flex align-items-center mb-3">
+        <a asp-controller="Appointment" asp-action="@nameof(AppointmentController.List)" class="text-decoration-none">
+            <i class="bi bi-arrow-left-circle-fill h2 me-2"></i>
+        </a>&emsp;&emsp;
+        <h2>@Labels.ViewAppoint</h2>
+    </div><br />
+    <form class="row g-3" id="theForm" asp-action="@nameof(AppointmentController.AppointmentView)" asp-controller="Appointment" autocomplete="off" method="post">
+        <div class="col-md-4">
+            <label class="form-label">@Labels.CustMyKad</label>
+            <input type="text" class="form-control" asp-for="CustMyKad" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.LaserName</label>
+            <input type="text" class="form-control" asp-for="LaserName" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.LaserPrice</label>
+            <input type="text" class="form-control" asp-for="LaserPrice" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.AssignedTo</label>
+            <input type="text" class="form-control" asp-for="StaffId" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.AppointDate</label>
+            <input type="date" class="form-control" asp-for="AppointDate" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.AppointTime</label>
+            <input type="text" class="form-control" asp-for="AppointTime" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Status</label>
+            <input type="text" class="form-control @statusClass" asp-for="Status" readonly>
+        </div>
+    </form>
+</div>

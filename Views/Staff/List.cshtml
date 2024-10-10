@@ -1,0 +1,81 @@
+﻿@model IEnumerable<TLCOnline.Models.StaffModel>
+
+@{
+    ViewData["Title"] = Labels.Staffs;
+    int i = 1;
+}
+
+<div class="container mt-3">
+    <h2>@Labels.ListOfStaff</h2>
+    <div class="d-flex justify-content-end">
+        <a asp-controller="Staff" asp-action="@nameof(StaffController.Add)" class="btn btn-primary">@Labels.AddNewStaff</a>
+    </div><br />
+    <div class="col-md-4">
+        <input id="myInput" type="text" placeholder="Search.." class="form-control">
+    </div><br />
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>@Labels.No</th>
+                <th>@Labels.StaffId</th>
+                <th>@Labels.Name</th>
+                <th>@Labels.Position</th>
+                <th>@Labels.HireDate</th>
+                <th>@Labels.Status</th>
+                <td>@Labels.Action</td>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            @foreach (var staff in Model)
+            {
+                string statusClass = staff.Status switch
+                {
+                    "Active" => "status-completed",
+                    "Inactive" => "status-cancelled",
+                    _ => "status-default"
+                };
+                <tr>
+                    <td>@i</td>
+                    <td>@staff.StaffId</td>
+                    <td>@staff.StaffName</td>
+                    <td>@staff.Position</td>
+                    <td>@staff.HireDate.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <div class="d-flex justify-content-center rounded-pill @statusClass">
+                            @staff.Status
+                        </div>
+                    </td>
+                    <td>
+                        <a asp-controller="Staff" asp-action="@nameof(StaffController.StaffView)" asp-route-id="@staff.StaffId" class="text-decoration-none">
+                            <i class="bi bi-eye-fill h5"></i>
+                        </a>&emsp;
+                        <a asp-controller="Staff" asp-action="@nameof(StaffController.Update)" asp-route-id="@staff.StaffId" class="text-decoration-none">
+                            <i class="bi bi-pencil-square h5"></i>
+                        </a>&ensp;
+                        <a data-bs-toggle="modal" data-bs-target="#deleteModal" data-item-id="@staff.StaffId" class="text-decoration-none">
+                            <i class="bi bi-trash3-fill h5"></i>
+                        </a>
+                    </td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        var itemId;
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            itemId = button.data('item-id');
+        });
+
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    </script>
+}

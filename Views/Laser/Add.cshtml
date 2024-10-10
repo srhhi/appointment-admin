@@ -1,0 +1,65 @@
+﻿@model TLCOnline.Models.LaserModel
+
+@{
+    ViewData["Title"] = Labels.AddLaser;
+}
+
+<div class="container mt-3">
+    <br />
+    <div class="d-flex align-items-center mb-3">
+        <a asp-controller="Laser" asp-action="@nameof(LaserController.List)" class="text-decoration-none">
+            <i class="bi bi-arrow-left-circle-fill h2 me-2"></i>
+        </a>&emsp;&emsp;
+        <h2>@Labels.AddLaser</h2>
+    </div><br />
+    <form class="row g-3" id="theForm" asp-action="@nameof(LaserController.Add)" asp-controller="Laser" autocomplete="off" method="post">
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Name</label>
+            <input type="text" class="form-control" asp-for="LaserName">
+            <span asp-validation-for="LaserName" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Description</label>
+            <input type="text" class="form-control" asp-for="LaserDesc">
+            <span asp-validation-for="LaserDesc" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.NormalPrice</label>
+            <input type="number" class="form-control" asp-for="NormalPrice">
+            <span asp-validation-for="NormalPrice" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Discount</label>
+            <input type="number" class="form-control" asp-for="Discount">
+            <span asp-validation-for="Discount" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.CurrentPrice</label>
+            <input type="number" class="form-control" asp-for="LaserPrice" readonly>
+        </div>
+        <div class="col-12">
+            <button id="btnSubmit" class="btn btn-primary" type="submit">@Labels.Submit</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        if (alertMessage) {
+            showAlertModal('@ViewData["AlertMessage"]', '@ViewData["AlertTitle"]');
+        }
+    
+        function calcPrice() {
+            let x = parseFloat($('#NormalPrice').val()) || 0;
+            let y = parseFloat($('#Discount').val()) || 0;
+            let total = x * (1-(y/100));
+            $('#LaserPrice').val(total);
+        }
+
+        $(function () {
+            $('#NormalPrice, #Discount').on("input", calcPrice);
+        });
+
+    </script>
+}

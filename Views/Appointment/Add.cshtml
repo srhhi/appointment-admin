@@ -1,0 +1,142 @@
+﻿@model TLCOnline.Models.AppointmentModel
+
+@{
+    ViewData["Title"] = Labels.AddAppoint;
+
+    var customers = ViewBag.Customers as IEnumerable<SelectListItem>;
+    var lasers = ViewBag.Lasers as IEnumerable<SelectListItem>;
+    var staffs = ViewBag.Staffs as IEnumerable<SelectListItem>;
+}
+
+<div class="container mt-3">
+    <br />
+    <div class="d-flex align-items-center mb-3">
+        <a asp-controller="Appointment" asp-action="@nameof(AppointmentController.List)" class="text-decoration-none">
+            <i class="bi bi-arrow-left-circle-fill h2 me-2"></i>
+        </a>&emsp;&emsp;
+        <h2>@Labels.AddAppoint</h2>
+    </div><br />
+    <form class="row g-3" id="theForm" asp-action="@nameof(AppointmentController.Add)" asp-controller="Appointment" autocomplete="off" method="post">
+        <div class="col-md-4">
+            <label class="form-label">@Labels.CustName</label>
+            <select class="form-select" asp-for="CustMyKad">
+                <option value="">@Labels.SelectCust</option>
+                @foreach (var customer in customers)
+                {
+                    <option value="@customer.Value">@customer.Text</option>
+                }
+            </select>
+            <span asp-validation-for="CustMyKad" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.LaserName</label>
+            <select class="form-select" id="LaserSelect" asp-for="LaserName">
+                <option value="">@Labels.SelectLaser</option>
+                @foreach (var laser in lasers)
+                {
+                    <option value="@laser.Value">@laser.Text</option>
+                }
+            </select>
+            <span asp-validation-for="LaserName" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.LaserPrice</label>
+            <input type="text" class="form-control" asp-for="LaserPrice" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.AssignedTo</label>
+            <select class="form-select" asp-for="StaffId" asp-items="staffs">
+
+                <option value="">@Labels.SelectStaff</option>
+                @foreach (var staff in staffs)
+                {
+                    <option value="@staff.Value">@staff.Text</option>
+                }
+            </select>
+            <span asp-validation-for="StaffId" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.AppointDate</label>
+            <input type="date" class="form-control" asp-for="AppointDate">
+            <span asp-validation-for="AppointDate" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.AppointTime</label>
+            <select class="form-select" asp-for="AppointTime">
+                <option value="">@Labels.SelectTime</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="12:00 PM">12:00 PM</option>
+                <option value="01:00 PM">01:00 PM</option>
+                <option value="02:00 PM">02:00 PM</option>
+                <option value="03:00 PM">03:00 PM</option>
+                <option value="04:00 PM">04:00 PM</option>
+                <option value="05:00 PM">05:00 PM</option>
+                <option value="06:00 PM">06:00 PM</option>
+            </select>
+            <span asp-validation-for="AppointTime" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Status</label>
+            <input type="text" class="form-control" asp-for="Status" value="Scheduled" readonly>
+        </div>
+        <div class="col-12">
+            <button id="btnSubmit" class="btn btn-primary" type="submit">@Labels.Submit</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        function checkDateAndTime() {
+            var appointDate = $('#AppointDate').val();
+            var appointTime = $('#AppointTime').val();
+            var custMyKad = $('#CustMyKad').val();
+            var staffId = $('#StaffId').val();
+
+            $.ajax({
+                url: '@Url.Action("CheckAppointmentExists", "Appointment")',
+                type: 'POST',
+                data: { appointDate: appointDate, appointTime: appointTime, custMyKad: custMyKad, staffId: staffId },
+                success: function (response) {
+                    if (response.exists) {
+                        showAlertModal(response.error, 'Appointment Failed');
+                        $('#btnSubmit').prop('disabled', true);
+                    } else {
+                        $('#btnSubmit').prop('disabled', false);
+                    }
+                }
+            });
+        }
+
+        function getLaserPrice () {
+            var laserName = $(this).val();
+            if (laserName) {
+                $.ajax({
+                    url: '@Url.Action("GetLaserPrice", "Appointment")',
+                    type: 'GET',
+                    data: { LaserName: laserName },
+                    success: function (response) {
+                        if (response) {
+                            $('#LaserPrice').val(response.price.toFixed(2));
+                        } else {
+                            $('#LaserPrice').val('');
+                        }
+                    },
+                    error: function () {
+                        alert("Failed to get laser price.");
+                    }
+                });
+            } else {
+                $('#LaserPrice').val = '';
+            }
+        }
+
+        $(function () {
+            $('#LaserSelect').on('change', getLaserPrice);
+            $('#AppointDate, #AppointTime').on('change', checkDateAndTime);
+        });
+
+    </script>
+}

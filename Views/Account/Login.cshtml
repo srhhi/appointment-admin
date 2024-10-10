@@ -1,0 +1,39 @@
+﻿@model TLCOnline.Models.LoginModel
+
+@{
+    ViewData["Title"] = Labels.LogIn;
+    Layout = "_LayoutLogin";
+}
+<form id="theForm" asp-action="@nameof(AccountController.Login)" asp-controller="Account" autocomplete="off" method="post">
+    <img class="mb-4" src="/img/tlc_logo.png" width="150" height="150">
+    <h1 class="h3 mb-3 fw-normal">@Labels.LogIn</h1>
+    <p id="currentDateTime">@ViewBag.CurrentDateTime</p>
+    <div class="form-floating">
+        <input type="email" class="form-control" asp-for="Email" placeholder="name@tlc.com">
+        <label for="Email">@Labels.Email</label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-floating">
+        <input type="password" class="form-control" asp-for="Password" placeholder="Password">
+        <label for="Password">@Labels.Password</label>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div><br />
+    <button class="w-100 btn btn-lg btn-primary" id="SignInBtn" type="submit">@Labels.LogIn</button>
+
+    <p class="mt-5 mb-3 text-muted">&copy; 2024</p>
+</form>
+
+@section Scripts {
+    <script type="text/javascript">
+        if (alertMessage) {
+            showAlertModal('@ViewData["AlertMessage"]', '@ViewData["AlertTitle"]');
+        }
+
+        setInterval(() => {
+            const now = new Date();
+            $('#currentDateTime').text(now.toLocaleString('en-US', { 
+                weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', 
+                hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true }));
+        }, 1000);
+    </script>
+}

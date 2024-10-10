@@ -1,0 +1,84 @@
+﻿@model IEnumerable<TLCOnline.Models.AppointmentModel>
+
+@{
+    ViewData["Title"] = Labels.Appointments;
+    int i = 1;
+}
+
+<div class="container mt-3">
+    <h2>@Labels.ListOfAppoint</h2>
+    <div class="d-flex justify-content-end">
+        <a asp-controller="Appointment" asp-action="@nameof(AppointmentController.Add)" class="btn btn-primary">@Labels.AddNewAppoint</a>
+    </div><br />
+    <div class="col-md-4">
+        <input id="myInput" type="text" placeholder="Search.." class="form-control">
+    </div><br />
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>@Labels.No</th>
+                <th>@Labels.CustName</th>
+                <th>@Labels.LaserName</th>
+                <th>@Labels.AssignedTo</th>
+                <th>@Labels.AppointDate</th>
+                <th>@Labels.AppointTime</th>
+                <th>@Labels.Status</th>
+                <td>@Labels.Action</td>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            @foreach (var appointment in Model)
+            {
+                string statusClass = appointment.Status switch
+                {
+                    "Scheduled" => "status-scheduled",
+                    "Completed" => "status-completed",
+                    "Cancelled" => "status-cancelled",
+                    _ => "status-default"
+                };
+                <tr>
+                    <td>@i</td>
+                    <td>@appointment.CustMyKad</td>
+                    <td>@appointment.LaserName</td>
+                    <td>@appointment.StaffId</td>
+                    <td>@appointment.AppointDate.ToString("dd/MM/yyyy")</td>
+                    <td>@appointment.AppointTime</td>
+                    <td>
+                        <div class="d-flex justify-content-center rounded-pill @statusClass">
+                            @appointment.Status
+                        </div>
+                    </td>
+                    <td>
+                        <a asp-controller="Appointment" asp-action="@nameof(AppointmentController.AppointmentView)" asp-route-id="@appointment.AppointId" class="text-decoration-none">
+                            <i class="bi bi-eye-fill h5"></i>
+                        </a>&emsp;
+                        <a asp-controller="Appointment" asp-action="@nameof(AppointmentController.Update)" asp-route-id="@appointment.AppointId" class="text-decoration-none">
+                            <i class="bi bi-pencil-square h5"></i>
+                        </a>&ensp;
+                        <a data-bs-toggle="modal" data-bs-target="#deleteModal" data-item-id="@appointment.AppointId" class="text-decoration-none">
+                            <i class="bi bi-trash3-fill h5"></i>
+                        </a>
+                    </td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        var itemId;
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            itemId = button.data('item-id');
+        });
+
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    </script>
+}

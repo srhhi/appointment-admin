@@ -1,0 +1,45 @@
+﻿@model TLCOnline.Models.CustomerModel
+
+@{
+    ViewData["Title"] = Labels.ViewCust;
+}
+
+<div class="container mt-3">
+    <br />
+    <div class="d-flex align-items-center mb-3">
+        <a asp-controller="Customer" asp-action="@nameof(CustomerController.List)" class="text-decoration-none">
+            <i class="bi bi-arrow-left-circle-fill h2 me-2"></i>
+        </a>&emsp;&emsp;
+        <h2>@Labels.ViewCust</h2>
+    </div><br />
+    <form class="row g-3" id="theForm" asp-action="@nameof(CustomerController.CustomerView)" asp-controller="Customer" autocomplete="off" method="post">
+        <div class="col-md-4">
+            <label class="form-label">@Labels.MyKad</label>
+            <input type="text" class="form-control" asp-for="CustMyKad" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Email</label>
+            <input type="text" class="form-control" asp-for="Email" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Name</label>
+            <input type="text" class="form-control" asp-for="CustName" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Gender</label>
+            <input type="text" class="form-control" asp-for="Gender" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.PhoneNo</label>
+            <input type="text" class="form-control" asp-for="PhoneNo" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.BirthDate</label>
+            <input type="date" class="form-control" asp-for="BirthDate" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.RegisterDate</label>
+            <input type="text" class="form-control" asp-for="RegisterDate" readonly>
+        </div>
+    </form>
+</div>

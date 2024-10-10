@@ -1,0 +1,37 @@
+﻿@model TLCOnline.Models.LaserModel
+
+@{
+    ViewData["Title"] = Labels.ViewLaser;
+}
+
+<div class="container mt-3">
+    <br />
+    <div class="d-flex align-items-center mb-3">
+        <a asp-controller="Laser" asp-action="@nameof(LaserController.List)" class="text-decoration-none">
+            <i class="bi bi-arrow-left-circle-fill h2 me-2"></i>
+        </a>&emsp;&emsp;
+        <h2>@Labels.ViewLaser</h2>
+    </div><br />
+    <form class="row g-3" id="theForm" asp-action="@nameof(LaserController.LaserView)" asp-controller="Laser" autocomplete="off" method="post">
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Name</label>
+            <input type="text" class="form-control" asp-for="LaserName" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Description</label>
+            <input type="text" class="form-control" asp-for="LaserDesc" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.NormalPrice</label>
+            <input type="number" class="form-control" asp-for="NormalPrice" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.Discount</label>
+            <input type="number" class="form-control" asp-for="Discount" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">@Labels.CurrentPrice</label>
+            <input type="number" class="form-control" asp-for="LaserPrice" readonly>
+        </div>
+    </form>
+</div>

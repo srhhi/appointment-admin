@@ -1,0 +1,71 @@
+﻿@model IEnumerable<TLCOnline.Models.LaserModel>
+
+@{
+    ViewData["Title"] = Labels.Lasers;
+    int i = 1;
+}
+
+<div class="container mt-3">
+    <h2>@Labels.ListOfLaser</h2>
+    <div class="d-flex justify-content-end">
+        <a asp-controller="Laser" asp-action="@nameof(LaserController.Add)" class="btn btn-primary">@Labels.AddNewLaser</a>
+    </div><br />
+    <div class="col-md-4">
+        <input id="myInput" type="text" placeholder="Search.." class="form-control">
+    </div><br />
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>@Labels.No</th>
+                <th>@Labels.Name</th>
+                <th>@Labels.Description</th>
+                <th>@Labels.NormalPrice</th>
+                <th>@Labels.Discount</th>
+                <th>@Labels.LaserPrice</th>
+                <th>@Labels.Action</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            @foreach (var laser in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@laser.LaserName</td>
+                    <td>@laser.LaserDesc</td>
+                    <td>@laser.NormalPrice</td>
+                    <td>@laser.Discount</td>
+                    <td>@laser.LaserPrice</td>
+                    <td>
+                        <a asp-controller="Laser" asp-action="@nameof(LaserController.LaserView)" asp-route-id="@laser.LaserName" class="text-decoration-none">
+                            <i class="bi bi-eye-fill h5"></i>
+                        </a>&emsp;
+                        <a asp-controller="Laser" asp-action="@nameof(LaserController.Update)" asp-route-id="@laser.LaserName" class="text-decoration-none">
+                            <i class="bi bi-pencil-square h5"></i>
+                        </a>&ensp;
+                        <a data-bs-toggle="modal" data-bs-target="#deleteModal" data-item-id="@laser.LaserName" class="text-decoration-none">
+                            <i class="bi bi-trash3-fill h5"></i>
+                        </a>
+                    </td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        var itemId;
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            itemId = button.data('item-id');
+        });
+
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    </script>
+}
